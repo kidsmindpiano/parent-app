@@ -48,6 +48,9 @@ export default function DashboardPage() {
   if (!student) return null;
 
   const firstName = student.학생명.trim().slice(-2);
+  const lastChar = student.학생명.trim().slice(-1);
+  const hasJongseong = ((lastChar.charCodeAt(0) - 0xAC00) % 28) !== 0;
+  const suffix = hasJongseong ? '아' : '야';
   const timeDiff = getTimeDiff(student);
 
   const nextLesson = useMemo(() => {
@@ -61,12 +64,12 @@ export default function DashboardPage() {
   }, [student]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-text">
-            {firstName}아, 오늘도 화이팅! 🎵
+          <h1 className="text-lg font-bold text-text">
+            {firstName}{suffix}, 오늘도 화이팅! 🎵
           </h1>
           <p className="text-sm text-text-light mt-0.5">키즈마인드피아노</p>
         </div>
@@ -80,14 +83,14 @@ export default function DashboardPage() {
 
       {/* Next Lesson Card */}
       {nextLesson && (
-        <div className="bg-white rounded-2xl shadow-sm p-5 border border-border/50">
+        <div className="bg-white rounded-2xl shadow-sm p-6 border border-border/50">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-lg">📅</span>
             <h2 className="font-semibold text-text">다음 수업</h2>
           </div>
           <div className="flex items-end justify-between">
             <div>
-              <p className="text-2xl font-bold text-primary">
+              <p className="text-xl font-bold text-primary">
                 {formatCountdown(nextLesson)}
               </p>
               <p className="text-sm text-text-light mt-1">
@@ -104,7 +107,7 @@ export default function DashboardPage() {
       )}
 
       {/* Student Info Card */}
-      <div className="bg-white rounded-2xl shadow-sm p-5 border border-border/50">
+      <div className="bg-white rounded-2xl shadow-sm p-6 border border-border/50">
         <div className="flex items-center gap-2 mb-3">
           <span className="text-lg">🎹</span>
           <h2 className="font-semibold text-text">내 정보</h2>
