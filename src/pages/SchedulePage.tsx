@@ -62,7 +62,13 @@ export default function SchedulePage() {
   const { student, allStudents } = useAuth();
   const [now, setNow] = useState(new Date());
   const timeDiff = getTimeDiff(student || {});
+  const myTeacher = student?.['담당 강사']?.trim() || null;
   const [selectedTeacher, setSelectedTeacher] = useState<string | null>(null);
+
+  // 담당 선생님 자동 선택
+  useEffect(() => {
+    if (myTeacher && !selectedTeacher) setSelectedTeacher(myTeacher);
+  }, [myTeacher]);
 
   useEffect(() => {
     const interval = setInterval(() => setNow(new Date()), 60000);
