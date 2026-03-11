@@ -1,10 +1,14 @@
 import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 
 const GAME_URL = 'https://kidsmindpiano.github.io/music-training/duo.html';
 const CARD_URL = 'https://kidsmindpiano.github.io/music-training/cards.html';
 const RHYTHM_URL = 'https://kidsmindpiano.github.io/music-training/game.html';
 
 export default function GamePage() {
+  const { student } = useAuth();
+  const studentName = student?.학생명?.trim() || '';
+  const studentParam = studentName ? '?student=' + encodeURIComponent(studentName) : '';
   const [useIframe, setUseIframe] = useState(false);
 
   return (
@@ -27,7 +31,7 @@ export default function GamePage() {
 
             <div className="space-y-3">
               <a
-                href={GAME_URL}
+                href={GAME_URL + studentParam}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition shadow-sm text-center"
@@ -45,13 +49,13 @@ export default function GamePage() {
 
           {/* Mini Games */}
           <div className="grid grid-cols-2 gap-3">
-            <a href={CARD_URL} target="_blank" rel="noopener noreferrer"
+            <a href={CARD_URL + studentParam} target="_blank" rel="noopener noreferrer"
               className="bg-white rounded-2xl shadow-sm p-5 border border-border/50 text-center hover:shadow-md transition">
               <span className="text-3xl block mb-2">🃏</span>
               <h3 className="text-sm font-bold text-text">카드 뒤집기</h3>
               <p className="text-xs text-text-light mt-1">음표 짝 맞추기</p>
             </a>
-            <a href={RHYTHM_URL} target="_blank" rel="noopener noreferrer"
+            <a href={RHYTHM_URL + studentParam} target="_blank" rel="noopener noreferrer"
               className="bg-white rounded-2xl shadow-sm p-5 border border-border/50 text-center hover:shadow-md transition">
               <span className="text-3xl block mb-2">🥁</span>
               <h3 className="text-sm font-bold text-text">리듬 게임</h3>
@@ -79,7 +83,7 @@ export default function GamePage() {
           </button>
           <div className="bg-white rounded-2xl shadow-sm border border-border/50 overflow-hidden" style={{ height: 'calc(100vh - 180px)' }}>
             <iframe
-              src={GAME_URL}
+              src={GAME_URL + studentParam}
               title="뮤직마스터"
               className="w-full h-full border-0"
               allow="autoplay; microphone"
