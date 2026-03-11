@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 const GAME_URL = 'https://kidsmindpiano.github.io/music-training/duo.html';
+const CARD_URL = 'https://kidsmindpiano.github.io/music-training/cards.html';
+const RHYTHM_URL = 'https://kidsmindpiano.github.io/music-training/game.html';
 
 export default function GamePage() {
   const [useIframe, setUseIframe] = useState(false);
@@ -39,6 +41,22 @@ export default function GamePage() {
                 📱 이 화면에서 열기
               </button>
             </div>
+          </div>
+
+          {/* Mini Games */}
+          <div className="grid grid-cols-2 gap-3">
+            <a href={CARD_URL} target="_blank" rel="noopener noreferrer"
+              className="bg-white rounded-2xl shadow-sm p-5 border border-border/50 text-center hover:shadow-md transition">
+              <span className="text-3xl block mb-2">🃏</span>
+              <h3 className="text-sm font-bold text-text">카드 뒤집기</h3>
+              <p className="text-xs text-text-light mt-1">음표 짝 맞추기</p>
+            </a>
+            <a href={RHYTHM_URL} target="_blank" rel="noopener noreferrer"
+              className="bg-white rounded-2xl shadow-sm p-5 border border-border/50 text-center hover:shadow-md transition">
+              <span className="text-3xl block mb-2">🥁</span>
+              <h3 className="text-sm font-bold text-text">리듬 게임</h3>
+              <p className="text-xs text-text-light mt-1">노래에 맞춰 탭!</p>
+            </a>
           </div>
 
           {/* Tips */}
