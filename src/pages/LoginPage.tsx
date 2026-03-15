@@ -26,8 +26,8 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-bg px-14">
-      <div className="w-full max-w-xs">
+    <div className="min-h-screen flex items-center justify-center bg-bg px-20 border-4 border-red-500 relative"><span className="absolute top-1 left-1 bg-red-500 text-white text-[10px] px-1 rounded z-50">outer px-20 (80px)</span>
+      <div className="w-full max-w-xs border-4 border-blue-500 relative"><span className="absolute -top-5 left-0 bg-blue-500 text-white text-[10px] px-1 rounded z-50">max-w-xs (320px)</span>
         <div className="text-center mb-8">
           <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
             <span className="text-4xl">🎹</span>
@@ -35,7 +35,7 @@ export default function LoginPage() {
           <h1 className="text-2xl font-bold text-text">키즈마인드피아노</h1>
           <p className="text-text-light mt-1 text-sm">학부모 & 학생 포털</p>
         </div>
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm p-6 space-y-4 border-4 border-green-500 relative"><span className="absolute -top-5 left-0 bg-green-500 text-white text-[10px] px-1 rounded z-50">form p-6 (24px)</span>
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-text mb-1.5">학생 이름</label>
             <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)}
