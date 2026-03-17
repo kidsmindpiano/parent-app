@@ -4,6 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 const GAME_URL = 'https://kidsmindpiano.github.io/music-training/duo.html';
 const CARD_URL = 'https://kidsmindpiano.github.io/music-training/cards.html';
 const RHYTHM_URL = 'https://kidsmindpiano.github.io/music-training/game.html';
+const PIANO_URL = 'https://kidsmindpiano.github.io/music-training/piano.html';
 
 export default function GamePage() {
   const { student } = useAuth();
@@ -60,6 +61,12 @@ export default function GamePage() {
               <span className="text-3xl block mb-2">🥁</span>
               <h3 className="text-sm font-bold text-text">리듬 게임</h3>
               <p className="text-xs text-text-light mt-1">노래에 맞춰 탭!</p>
+            </a>
+            <a href={PIANO_URL + studentParam} target="_blank" rel="noopener noreferrer"
+              className="bg-white rounded-2xl shadow-sm p-5 border border-border/50 text-center hover:shadow-md transition col-span-2">
+              <span className="text-3xl block mb-2">🎹</span>
+              <h3 className="text-sm font-bold text-text">피아노 연주</h3>
+              <p className="text-xs text-text-light mt-1">오선지를 보고 건반 연주!</p>
             </a>
           </div>
 
